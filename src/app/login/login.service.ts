@@ -7,7 +7,11 @@ export class LoginService {
     constructor(private _http : HttpClient) { }
     
     authUser() : boolean {
-        this._http.get('assets/user.json');
+        console.log('http login call');
+        this._http.get('assets/user.json')
+        .subscribe(data => {
+            data => console.log("data response --->"+data)
+        });
         return false;
     }
 }

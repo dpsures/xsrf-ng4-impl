@@ -4,7 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material.module";
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientXsrfModule } from '@angular/common/http';
 
 import { AppHttpInterceptor } from "./http.interceptor";
 
@@ -21,9 +21,12 @@ import { LoginService } from "./login/login.service";
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AppHttpInterceptor,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'CSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN',
+    })
   ],
   providers: [
     LoginService,
