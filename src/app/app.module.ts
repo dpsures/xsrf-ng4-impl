@@ -7,12 +7,12 @@ import { MaterialModule } from "./material.module";
 import { HTTP_INTERCEPTORS, HttpClientXsrfModule } from '@angular/common/http';
 
 import { AppHttpInterceptor } from "./http.interceptor";
+import { CookieService } from "ngx-cookie-service";
 
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from './app.component';
 
 import { LoginService } from "./login/login.service";
-
 @NgModule({
   declarations: [
     AppComponent
@@ -29,7 +29,7 @@ import { LoginService } from "./login/login.service";
     })
   ],
   providers: [
-    LoginService,
+    LoginService, CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,
